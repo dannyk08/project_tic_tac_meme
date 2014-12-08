@@ -5,7 +5,7 @@ Overall
 	The functionality will be based on the traditional 3x3 board but instead of Xs & Os, they'll be replaced with 9GAG memes to make the players have a good laugh even if they loose
 
 		X will be replaced by random fox picture, nicholas cage, or a newer 9gag meme
-		O will be replaced my derp memes: poker face, oh gawd, derpina, rage derp
+		O will be replaced by derp memes: poker face, oh gawd, derpina, rage derp
 
 		Users will be able to choose which meme they want to be/ play with 
 
@@ -30,3 +30,39 @@ Javascript
 	I think/believe that the buttons will be called/addressed by being attached to an id or class and be called through a function
 		the function could be to start the game, push on buttons of pictures/memes
 
+---------------------------------- REQUIREMENTS -------------------------------
+
+Make sure to do all of the following with your app.
+
+	* Render a game board in the browser
+
+		- object Board
+			- attr
+
+			- behav
+
+		- object Pictures/memes
+			- attr
+
+			- behav
+
+		- object box
+			- attr
+
+			- behav
+
+		- object Player1
+			- attr
+
+			- behav
+
+		- object Player1
+			- attr
+
+			- behav
+
+	* Switch turns between X and O (or whichever markers you select)
+
+	* Declare a winner if a player gets three in a row, cat's game if neither does
+
+	* Allow for two players to compete on separate devices
