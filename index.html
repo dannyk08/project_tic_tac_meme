@@ -7,21 +7,25 @@
 	<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/MemeBoard.js"></script>
+<script type="text/javascript" src="js/TicTacController.js"></script>
+
 </head>
-<body>
+<body ng-app="TicTacApp" ng-controller="TicTacController as tictac">
 
 <header>
 	<nav>
-		<h1>Tic Tac Meme!</h1>
+		<h1>Tic Tac Meme! {{4+0}}</h1>
 	</nav>
 </header>
-
-
-
 <main>
 	<table id="ticTacToe">
 		<tr>
-			<td>meme pic!</td>
+			<td>meme pic! {{tictac.sentence()}}</td>
 			<td>meme pic!</td>
 			<td>meme pic!</td>
 			
@@ -40,20 +44,42 @@
 		</tr>
 	</table>
 
-	<footer class="players">
+	<h1>{{ game.activeBoard.tiles }} </h1>
+		<section id="active-board">
+			<div class="game-board">
+				<div class="board-tile"
+				     ng-repeat="tics in tictac.activeBoard.tiles track by $index"
+				     ng-click="tictac.activeBoard.toggleTile($index)"
+				     ng-class="tictac.activeBoard.getTileState($index)">
+				     {{ $index }}
+				</div>
+			</div>
+			<button>Submit Guess</button>
+		</section>
+
+	<section class="players">
 	<button id="player1" >Player1</button>
 	
 	<button id="player2">Player2</button>
-	</footer>
+	</section>
 
 </main>
 
-<aside>
-	<h2>Choose your Meme!</h2>
-</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
-
-<script type="text/javascript" src="js/main.js"></script>
-
 </html>

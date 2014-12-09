@@ -49,16 +49,31 @@ main > footer > button {
 	padding: 10px;
 
 }
-
-#player1 {
-	
-
+#active-board {
+	text-align: center;
+	margin-top: 10px;
 }
 
-#player2 {
-	float: right;
+#active-board button {
+	margin-top: 10px;
 }
 
-aside {
-	float: right;
+.board-tile {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border: 2px solid;
+	margin: 0 5px;
+}
+
+.board-tile.selected-tile {
+	background-color: black;
+}
+
+.board-tile.unselected-tile {
+	background-color: white;
+}
+
+.board-tile.red-tile {
+	background-color: red;
 }
