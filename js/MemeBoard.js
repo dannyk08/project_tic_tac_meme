@@ -1,15 +1,15 @@
-angular
-	.module('TicTacApp')
-	.factory('TicTacBoard', MemeBoard);
+// angular
+// 	.module('TicTacApp')
+// 	.factory('TicTacBoard', MemeBoard);
 
-function MemeBoard() {
+// function MemeBoard() {
 
-	self = this;
+// 	self = this;
 
-	function makeTableArray(){
+// 	function makeTableArray(){
 		
-	}
-}
+// 	}
+// }
 
 
 

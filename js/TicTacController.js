@@ -1,36 +1,53 @@
-angular
-	.module("TicTacApp")
-	.controller("TicTacController", TicTacController);
-
-// TicTacController.$inject = ['$firebase'];
-
-// $inject > $firsbase inside the controller brackets and the function
-
-// TicTacController.$inject = ['TicTacBoard'];
-
-	// var self = this;
-
-	function TicTacController(){
-
-		var self = this;
-
-		self.gameBoard = new Array(9);
-
-		self.playerMove = playerMove;
-
-		self.checkWin = checkWin;
-
-		self.turn = 1;
-
-
-
+// TODOS
 // clickable tiles 
 // check whose turn it is 
 
 // set value to X or O
 // change player turn variable 
 // check for win
+
+// TicTacController.$inject = ['$firebase'];
+// $inject > $firebase inside the controller brackets and the function
+// TicTacController.$inject = ['TicTacBoard'];
+// var self = this;
+
+angular
+	.module("TicTacApp")
+	.controller("TicTacController", TicTacController);
+
+	function TicTacController(){
+		// negates redundancy and weird javascript shit from happening
+		var self = this;
+		// sets an array of 9 divs in the html > body
+		self.gameBoard = new Array(9);
+		// Player is able to click their option
+		self.playerMove = playerMove;
+		self.counter = 0;
+		
+		// Game logic functions 
+		// self.checkWin = checkWin;
+		self.endGame = false;
+		// self.gameDraw = gameDraw;
+		self.turn = 1;
+		self.winner = "";
+		self.winningMessage = function () {
+			//if the string is empty then nothing should appear
+			if ((self.winner === "") && (self.counter>=9) ){
+				return "There's a draw!!!";
+			}
+			else if (self.winner === ""){
+				return "";
+			}
+			//else return winning Player!
+			else {
+				return "Player " + self.winner + " Wins!!!";
+			}
+		};
+
+
 		function playerMove($index){
+			self.counter++;
+			console.log(self.counter);
 			if(self.gameBoard[$index] === undefined){
 				if (self.turn === 1) {
 					self.gameBoard[$index] = "X";
@@ -63,8 +80,14 @@ angular
 				 (self.gameBoard[1] === "X" && self.gameBoard[4] === "X" && self.gameBoard[7] === "X" ) ||
 				 (self.gameBoard[2] === "X" && self.gameBoard[5] === "X" && self.gameBoard[8] === "X" ) ||
 				 (self.gameBoard[0] === "X" && self.gameBoard[4] === "X" && self.gameBoard[8] === "X" ) ||
-				 (self.gameBoard[6] === "X" && self.gameBoard[4] === "X" && self.gameBoard[2] === "X" )){
-					console.log("You WON!!!");
+				 (self.gameBoard[2] === "X" && self.gameBoard[4] === "X" && self.gameBoard[6] === "X" )){
+					self.endGame = true;
+					if (self.endGame === true){
+						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
+						self.winner = self.turn;
+						console.log("You WON!!!");
+					}
+					// gameDraw();
 				}
 				else if ((self.gameBoard[0] === "O" && self.gameBoard[1] === "O" && self.gameBoard[2] === "O" ) ||
 				 (self.gameBoard[3] === "O" && self.gameBoard[4] === "O" && self.gameBoard[5] === "O" ) ||
@@ -73,14 +96,26 @@ angular
 				 (self.gameBoard[1] === "O" && self.gameBoard[4] === "O" && self.gameBoard[7] === "O" ) ||
 				 (self.gameBoard[2] === "O" && self.gameBoard[5] === "O" && self.gameBoard[8] === "O" ) ||
 				 (self.gameBoard[0] === "O" && self.gameBoard[4] === "O" && self.gameBoard[8] === "O" ) ||
-				 (self.gameBoard[6] === "O" && self.gameBoard[4] === "O" && self.gameBoard[2] === "O" )){
-					console.log("You WON!!!");
+				 (self.gameBoard[2] === "O" && self.gameBoard[4] === "O" && self.gameBoard[6] === "O" )){
+					self.endGame = true;
+					if (self.endGame === true){
+						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
+						self.winner = self.turn;
+						console.log("You WON!!!");
+					}
+					// gameDraw();
+				}
+				else if ((self.gameBoard[0] === ("O" || "X")) && (self.gameBoard[1] === ("O" || "X")) && (self.gameBoard[2] === ("O" || "X")) &&
+					(self.gameBoard[3] === ("O" || "X")) && (self.gameBoard[4] === ("O" || "X")) && (self.gameBoard[5] === ("O" || "X")) &&
+					(self.gameBoard[6] === ("O" || "X")) && (self.gameBoard[7] === ("O" || "X")) && (self.gameBoard[8]) === ("O" || "X")){
+					self.endGame = true;
+					if (self.endGame === true){	
+						alert ("There's a draw");
+					}
 				}
 			
-				// else if (self.gameBoard === ("O"||"X")){
-				// 	console.log("There's been a draw.");
-				// }
-		} 
+				// checkDraw();
+		}
 
 
 		// self.playingBoard = new TicTacBoard( 9 );

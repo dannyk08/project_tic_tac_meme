@@ -19,7 +19,7 @@
 <header>
 	<nav>
 		<h1>{{tictac.gameName}} version: {{tictac.gameVersion}} </h1>
-		
+		<h2>{{tictac.winningMessage()}}</h2>
 		
 	</nav>
 </header>
@@ -27,8 +27,8 @@
 
 <h2>{{tictac.playingBoard.boxes}}</h2>
 <main>
-	<section id="the-game-board">
-		<div class="">
+	<section id="the-game-board" >
+		<div>
 			<div class="game-on" 
 					ng-repeat="tile in tictac.gameBoard track by $index"
 					ng-class="tictac.playingBoard.tileStatus($index)"
