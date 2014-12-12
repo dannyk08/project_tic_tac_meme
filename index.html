@@ -6,45 +6,46 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
-<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/MemeBoard.js"></script>
-<script type="text/javascript" src="js/TicTacController.js"></script>
-
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/MemeBoard.js"></script>
+	<script type="text/javascript" src="js/TicTacController.js"></script>
 </head>
 <body ng-app="TicTacApp" ng-controller="TicTacController as tictac">
 
 <header>
 	<nav>
-		<h1>Tic Tac Meme! {{4+0}}</h1>
+		<h1>{{tictac.gameName}} version: {{tictac.gameVersion}} </h1>
+		
+		
 	</nav>
 </header>
-<main>
-	<table id="ticTacToe">
-		<tr>
-			<td>meme pic! {{tictac.sentence()}}</td>
-			<td>meme pic!</td>
-			<td>meme pic!</td>
-			
-		</tr>
-		<tr>
-			<td>meme pic!</td>
-			<td>meme pic!</td>
-			<td>meme pic!</td>
-			
-		</tr>
-		<tr>
-			<td>meme pic!</td>
-			<td>meme pic!</td>
-			<td>meme pic!</td>
-			
-		</tr>
-	</table>
 
-	<h1>{{ game.activeBoard.tiles }} </h1>
+
+<h2>{{tictac.playingBoard.boxes}}</h2>
+<main>
+	<section id="the-game-board">
+		<div class="">
+			<div class="game-on" 
+					ng-repeat="tile in tictac.gameBoard track by $index"
+					ng-class="tictac.playingBoard.tileStatus($index)"
+					ng-click="tictac.playerMove($index); tictac.checkWin($index)">
+					<p> {{tile}} </p>
+
+
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+	<!-- <h1>{{ game.activeBoard.tiles }} </h1>
 		<section id="active-board">
 			<div class="game-board">
 				<div class="board-tile"
@@ -55,7 +56,7 @@
 				</div>
 			</div>
 			<button>Submit Guess</button>
-		</section>
+		</section> -->
 
 	<section class="players">
 	<button id="player1" >Player1</button>
