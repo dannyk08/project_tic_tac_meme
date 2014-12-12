@@ -6,7 +6,9 @@
 // change player turn variable 
 // check for win
 
-// TicTacController.$inject = ['$firebase'];
+// sync the game to firebase!
+
+TicTacController.$inject = ['$firebase'];
 // $inject > $firebase inside the controller brackets and the function
 // TicTacController.$inject = ['TicTacBoard'];
 // var self = this;
@@ -51,7 +53,7 @@ angular
 			}
 			//else return winning Player!
 			else {
-				self.gameBoard = ("Player " + self.winner + " Won!");
+				self.gameBoard = ("Player " + self.winner + " Won").toUpperCase();
 
 				return "Player " + self.winner + " Wins!!!";
 			}
