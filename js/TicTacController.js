@@ -18,6 +18,16 @@ angular
 	function TicTacController(){
 		// negates redundancy and weird javascript shit from happening
 		var self = this;
+		
+		// Decoration variables that will look nice 
+		self.gameName = "Tic Tac Meme!";
+		self.gameVersion = "1.0" ;
+
+		// Switch between one or two players
+		// self.player1 = player1;
+		// self.player2 = player2;
+
+
 		// sets an array of 9 divs in the html > body
 		self.gameBoard = new Array(9);
 		// Player is able to click their option
@@ -72,7 +82,7 @@ angular
 		}
 
 		function checkWin($index){
-				
+				// Game Logic for "X"
 				if ((self.gameBoard[0] === "X" && self.gameBoard[1] === "X" && self.gameBoard[2] === "X" ) ||
 				 (self.gameBoard[3] === "X" && self.gameBoard[4] === "X" && self.gameBoard[5] === "X" ) ||
 				 (self.gameBoard[6] === "X" && self.gameBoard[7] === "X" && self.gameBoard[8] === "X" ) ||
@@ -81,14 +91,15 @@ angular
 				 (self.gameBoard[2] === "X" && self.gameBoard[5] === "X" && self.gameBoard[8] === "X" ) ||
 				 (self.gameBoard[0] === "X" && self.gameBoard[4] === "X" && self.gameBoard[8] === "X" ) ||
 				 (self.gameBoard[2] === "X" && self.gameBoard[4] === "X" && self.gameBoard[6] === "X" )){
+					// endGame will toggle to true if there's a winner
 					self.endGame = true;
+					// Pop up text for winner
 					if (self.endGame === true){
 						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
 						self.winner = self.turn;
-						console.log("You WON!!!");
 					}
-					// gameDraw();
 				}
+				// Game Logic for "O"
 				else if ((self.gameBoard[0] === "O" && self.gameBoard[1] === "O" && self.gameBoard[2] === "O" ) ||
 				 (self.gameBoard[3] === "O" && self.gameBoard[4] === "O" && self.gameBoard[5] === "O" ) ||
 				 (self.gameBoard[6] === "O" && self.gameBoard[7] === "O" && self.gameBoard[8] === "O" ) ||
@@ -97,32 +108,18 @@ angular
 				 (self.gameBoard[2] === "O" && self.gameBoard[5] === "O" && self.gameBoard[8] === "O" ) ||
 				 (self.gameBoard[0] === "O" && self.gameBoard[4] === "O" && self.gameBoard[8] === "O" ) ||
 				 (self.gameBoard[2] === "O" && self.gameBoard[4] === "O" && self.gameBoard[6] === "O" )){
+					// endGame will toggle to true if there's a winner
 					self.endGame = true;
+					// Pop up text for winner
 					if (self.endGame === true){
 						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
 						self.winner = self.turn;
-						console.log("You WON!!!");
-					}
-					// gameDraw();
-				}
-				else if ((self.gameBoard[0] === ("O" || "X")) && (self.gameBoard[1] === ("O" || "X")) && (self.gameBoard[2] === ("O" || "X")) &&
-					(self.gameBoard[3] === ("O" || "X")) && (self.gameBoard[4] === ("O" || "X")) && (self.gameBoard[5] === ("O" || "X")) &&
-					(self.gameBoard[6] === ("O" || "X")) && (self.gameBoard[7] === ("O" || "X")) && (self.gameBoard[8]) === ("O" || "X")){
-					self.endGame = true;
-					if (self.endGame === true){	
-						alert ("There's a draw");
 					}
 				}
-			
-				// checkDraw();
 		}
 
 
-		// self.playingBoard = new TicTacBoard( 9 );
-		self.gameName = "Tic Tac Meme!";
-		self.gameVersion = "1.0" ;
-		self.player1 = player1;
-		self.player2 = player2;
+		
 	
 	// function getMeme() {
 	// 	var whatever = new Firebase("https://dromero08app.firebaseio.com/TicTacMeme");

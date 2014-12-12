@@ -2,30 +2,33 @@
 <html>
 <head>
 	<title>Tic Tac Meme!</title>
+	<!-- css files -->
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!-- Google fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Exo+2:800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-	
+	<!-- angular library -->
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<!-- firebase -->
 	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<!-- local javascript files -->
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/MemeBoard.js"></script>
 	<script type="text/javascript" src="js/TicTacController.js"></script>
 </head>
+
 <body ng-app="TicTacApp" ng-controller="TicTacController as tictac">
 
 <header>
 	<nav>
-		<h1>{{tictac.gameName}} version: {{tictac.gameVersion}} </h1>
+		<h1>{{tictac.gameName}}</h1>
 		<h2>{{tictac.winningMessage()}}</h2>
-		
 	</nav>
 </header>
 
-
-<h2>{{tictac.playingBoard.boxes}}</h2>
 <main>
 	<section id="the-game-board" >
 		<div>
@@ -34,10 +37,9 @@
 					ng-class="tictac.playingBoard.tileStatus($index)"
 					ng-click="tictac.playerMove($index); tictac.checkWin($index)">
 					<p> {{tile}} </p>
-
-
 			</div>
 		</div>
+		<h3>Version: {{tictac.gameVersion}}</h3>
 	</section>
 
 
