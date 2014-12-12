@@ -32,7 +32,7 @@ angular
 		self.gameBoard = new Array(9);
 		// Player is able to click their option
 		self.playerMove = playerMove;
-		self.counter = 0;
+		self.counter = 9;
 		
 		// Game logic functions 
 		// self.checkWin = checkWin;
@@ -42,7 +42,8 @@ angular
 		self.winner = "";
 		self.winningMessage = function () {
 			//if the string is empty then nothing should appear
-			if ((self.winner === "") && (self.counter>=9) ){
+			if ((self.winner === "") && (self.counter===0) ){
+				self.gameBoard = "";
 				return "There's a draw!!!";
 			}
 			else if (self.winner === ""){
@@ -50,13 +51,15 @@ angular
 			}
 			//else return winning Player!
 			else {
+				self.gameBoard = ("Player " + self.winner + " Won!");
+
 				return "Player " + self.winner + " Wins!!!";
 			}
 		};
 
 
 		function playerMove($index){
-			self.counter++;
+			self.counter--;
 			console.log(self.counter);
 			if(self.gameBoard[$index] === undefined){
 				if (self.turn === 1) {
@@ -97,6 +100,7 @@ angular
 					if (self.endGame === true){
 						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
 						self.winner = self.turn;
+						resetGame();
 					}
 				}
 				// Game Logic for "O"
@@ -114,9 +118,14 @@ angular
 					if (self.endGame === true){
 						console.log(self.gameBoard[$index]="Player" + self.turn + " Wins!");
 						self.winner = self.turn;
+						resetGame();
 					}
 				}
 		}
+
+		// function restartGame(){
+		// 	if(self.)
+		// }
 
 
 		

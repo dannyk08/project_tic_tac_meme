@@ -28,37 +28,30 @@ p {
 
 /* div memeBoard styling*/
 
-section {
+
+section#the-game-board {
 	max-width: 325px;
-	max-height: 325px;
+	min-height: 325px;
 	margin: 0 auto;
-}
-
-#the-game-board {
 	text-align: center;
-	margin-top: 10px;
-}
-
-#the-game-board button {
-	margin-top: 10px;
 }
 
 .game-on {
 	display: inline-block;
 	width: 55px;
 	height: 55px;
-	border: 1px solid gray;
+	border: 1px solid rgba(20,20,20,0.3);
 	margin: 10px 15px;
+	font-size: 50px;
 }
 
-.game-on.clicked {
-	background-color: black;
+.game-on:hover {
+	background-color: rgba(20,20,20,0.1);
+	border: 1px solid rgba(20,20,20,0.5);
 }
-
-.game-on.unclicked {
-	background-color: white;
-}
-
-.game-on.red-tile {
-	background-color: red;
+section.game-buttons{
+	max-width: 325px;
+	/*min-height: 325px;*/
+	margin: 0 auto;
+	text-align: center;
 }
