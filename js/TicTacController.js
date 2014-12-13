@@ -134,25 +134,42 @@ angular
 						// resetGame();
 					}
 				}
-				
 		}
 
 		function restartGame(){
-			self.ticTacToe.board[$index] = [""];
+			self.ticTacToe.board = ["", "", "", "", "", "", "", "", ""].$save();
 		}
 
 		function getLobby() {
 			var ref = new Firebase("https://supergame.firebaseio.com/game");
 			var ticTacToe = $firebase(ref).$asObject();
+
 			self.ticTacToe = ticTacToe;
 			self.switchPlayers= self.playerMove;
 			self.ticTacToe.board = ["", "", "", "", "", "", "", "", ""];
-			self.ticTacToe.numTurns = 0;
+			
 			self.ticTacToe.$save();
+		}
 
+		function playerMovesFB(){
+			var ref = new Firebase("https://supergame.firebaseio.com/numTurns");
+			var ticTacToe = $firebase(ref).$asArray();
+			var players = self.ticTacToe.$save();
+
+			var playerCount = playerMove($index);
+			self.playerNum = self.lobby.numPlayers;
+			self.lobby.numPlayers = self.lobby.numPlayers + 1;	
+				if (!self.lobby.numPlayers){
+					self.lobby.numPlayers = 0;
+					self.lobby.whoseTurn = 0;
+					self.lobby.$save();
+				}
+
+				
+			// self.ticTacToe.numTurns = 9;
 		}
 
 		
 		
-// this is the closing bracket for the entire controller
+// this is the closing bracket for the entire controller DON'T DELETE IT!!!!!!!
 }
