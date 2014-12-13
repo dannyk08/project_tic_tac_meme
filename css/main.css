@@ -21,14 +21,16 @@ h2 {
 	font-weight: bold;
 }
 
-p {
-	position: fixed;
-	margin: 0 auto;
+div {
+	vertical-align: top;
+
 }
-	/*
-	p.ng-binding{
-		text-align: center;
-	}*/
+
+p.ng-binding{
+	position: fixed;
+	margin: 0px;
+	text-align: center;
+}
 
 /* div memeBoard styling*/
 
