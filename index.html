@@ -37,14 +37,14 @@
 		<!-- ng-show="tictac.playerNum === tictac.lobby.whoseTurn" 
 				ng-click="tictac.addToFBApp(newPlayerMoves); tictac.lobby.whoseTurn = (tictac.lobby.whoseTurn +1)%2; tictac.loby.$save();"-->
 			<div class="game-on" 
-					ng-repeat="tile in tictac.gameBoard track by $index"
+					ng-repeat="tile in tictac.ticTacToe.board track by $index"
 					ng-class="tictac.playingBoard.tileStatus($index)"
 					
 					ng-click="tictac.playerMove($index); tictac.checkWin($index)">
 					<p> {{tile}} </p>
 			</div>
 		</div>
-		<h3>Version: {{tictac.gameVersion}}</h3>
+		<h4>Version: {{tictac.gameVersion}}</h4>
 	</section>
 	<!-- image should appear when there is a winner or looser or there's a cats game -->
 	<!-- <img src=""> -->
@@ -63,7 +63,7 @@
 		</section> -->
 
 	<section class="game-buttons">
-		<button id="restart" >Restart Game!</button>
+		<button ng-click="tictac.restartGame($index)" id="restart" >Restart Game!</button>
 		
 		<!-- <button id="player2">Player2</button> -->
 	</section>
